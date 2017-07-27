@@ -1,17 +1,28 @@
 import React from 'react'
+import {Field, reduxForm} from 'redux-form';
 
 class PostNew extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
+  renderTitleField(field) {
     return (
       <div>
-        PostNew!!
+        <input type="text" {...field.input} />
       </div>
+    );
+  }
+
+  render() {
+    return (
+      <form>
+        <Field name="title" component={this.renderTitleField} />
+      </form>
     );
   }
 }
 
-export default PostNew;
+export default reduxForm({
+  form: 'PostNewForm'
+})(PostNew);
