@@ -9,14 +9,18 @@ class PostShow extends React.Component {
     this.props.fetchPost(id);
   }
 
-  helperFunction() {
-    this.props.posts[this.props.match.params.id];
-  }
-
   render() {
+    const { post } = this.props;
+
+    if (!post) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
-        {console.log(helperFunction())}
+        <h3>{post.title}</h3>
+        <h6>Categories: {post.categories}</h6>
+        <p>{post.content}</p>
       </div>
     );
   }
