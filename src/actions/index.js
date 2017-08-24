@@ -9,7 +9,7 @@ const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=PAPERCLIP1234';
 
 export function fetchPosts() {
-  return function (dispatch, getState) {
+  return (dispatch, getState) => {
     axios.get(`${ROOT_URL}/posts${API_KEY}`).then((data) => {
       dispatch({
         type: FETCH_POSTS,
@@ -20,7 +20,7 @@ export function fetchPosts() {
 }
 
 export function createPost(values, callback) {
-  return function (dispatch, getState) {
+  return  (dispatch, getState) => {
     axios.post(`${ROOT_URL}/posts${API_KEY}`, values)
       .then(callback)
       .then((data) => {
@@ -33,7 +33,7 @@ export function createPost(values, callback) {
 }
 
 export function fetchPost(id) {
-  return function (dispatch, getState) {
+  return (dispatch, getState) => {
     axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`).then((data) => {
       dispatch({
         type: FETCH_POST,
@@ -44,7 +44,7 @@ export function fetchPost(id) {
 }
 
 export function deletePost(id, callback) {
-  return function (dispatch, getState) {
+  return (dispatch, getState) => {
     axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
     .then(callback)
     .then((data) => {
